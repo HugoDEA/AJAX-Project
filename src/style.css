@@ -1,0 +1,18 @@
+table{/* Modifie le tableau*/
+    border-collapse: collapse;
+    margin: auto;
+    width: 80vh;
+}
+
+th {/*Modifie le tracage du tableau*/
+    border: 1px solid black;
+    width: 50%;
+    padding: 9px;
+    text-align: center;
+}
+body {/* Modifie le body*/
+    font-family: 'Roboto', sans-serif;
+}
+h1, h2{/*Met le texte au centre*/
+  text-align: center;
+}
