@@ -3,21 +3,25 @@ const char MAIN_page[] PROGMEM = R"=====(
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Chariot</title>
+	<title>Chariot</title><!--Titre du site sur le navigateur-->
 	<link rel="stylesheet" href="./style.css">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 <body>
-<h1>Système de surveillance pour chariot élévateur</h1>
+<h1>Système de surveillance pour chariot élévateur</h1> <!--Titre du site-->
 
 <br>
-
+<!--Début tableau-->
 <h2>Cabine du chariot</h2>
 <table>
     <tr>
             <tr>
                 <th>Utilisateur</th>
                 <th>2900940</th>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <th>Hugo</th>
             </tr>
             <tr><th>Vitesse</th>
                 <th>20 km/h</th>
@@ -29,6 +33,7 @@ const char MAIN_page[] PROGMEM = R"=====(
 </table>
 
 <br>
+<br>
 
 <h2>Fourche</h2>
 
@@ -36,7 +41,7 @@ const char MAIN_page[] PROGMEM = R"=====(
     <tr>
         <tr>
         <th>Couleur</th>
-        <th><span id="couleur">0</span></th>
+        <th>Bleu</th>
     </tr>
 
     <tr>
@@ -49,38 +54,21 @@ const char MAIN_page[] PROGMEM = R"=====(
     </tr>
 </table>
 
+<!--Fin tableau-->
+
 
 <div id="demo">
-    <h1>The ESP8266 NodeMCU Update web page without refresh</h1>
-        <button type="button" onclick="sendData(1)">LED ON</button>
-        <button type="button" onclick="sendData(0)">LED OFF</button><BR>
-    </div>
-    
-    <div>
-        ADC Value is : <span id="ADCValue">0</span><br>
-        LED State is : <span id="LEDState">NA</span>
-    </div>
-    
+        La valeur de l'ADC est :  <span id="ADCValue">0</span><br>
+      </div>
+
 <script>
-    function sendData(led) {
-      var xhttp = new XMLHttpRequest();
-      xhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-          document.getElementById("LEDState").innerHTML =
-          this.responseText;
-        }
-      };
-      xhttp.open("GET", "setLED?LEDstate="+led, true);
-      xhttp.send();
-    }
-    
     setInterval(function() {
-      // Call a function repetatively with 2 Second interval
+      // Appelle une fonctionne a repetition avec deux seconde d'intervalle
       getData();
-    }, 2000); //2000mSeconds update rate
+    }, 2000); 
     
-    function getData() {
-      var xhttp = new XMLHttpRequest();
+    function getData() { //Stock l'ADC
+      var xhttp = new XMLHttpRequest(); 
       xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
           document.getElementById("ADCValue").innerHTML =
@@ -99,7 +87,9 @@ table{/* Modifie le tableau*/
     border-collapse: collapse;
     margin: auto;
     width: 80vh;
+    background-color: midnightblue;
 }
+
 
 th {/*Modifie le tracage du tableau*/
     border: 1px solid black;
@@ -109,11 +99,16 @@ th {/*Modifie le tracage du tableau*/
 }
 body {/* Modifie le body*/
     font-family: 'Roboto', sans-serif;
-}
+    color: white;
+    background: #2596be;
+  }
 h1, h2{/*Met le texte au centre*/
   text-align: center;
 }
+#demo{
+  position: absolute;
+  bottom: 40px;
+}
 </style>
 </html>
-
 )=====";
